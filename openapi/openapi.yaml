@@ -10,7 +10,7 @@ paths:
   /serials-management/refdata:
     $ref: 'paths/serials_refdata_{domain}_{property}.yaml'
   /serials-management/serials/{serialsUUID}:
-    $ref: paths/serials_{uuid}.yaml
+    $ref: paths/serials_uuid.yaml
   /serials-management/rulesets:
     $ref: 'paths/rulesets.yaml'
   /serials-management/predictedPieces/generate:
