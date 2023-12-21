@@ -1,4 +1,5 @@
-get: 
+ get:
+  summary: Retrieve serial record
   responses:
     '200':
       description: OK
@@ -7,9 +8,7 @@ get:
 post:
   tags:
     - Tag
-  summary: Operation summary
-  description: |
-    Operation description **Markdown**.
+  summary: Create serial record
   operationId: operationId
   security:
     - api_key: []
@@ -39,3 +38,9 @@ post:
     '400':
       $ref: ../components/responses/Problem.yaml
 put:
+  summary: Update serial record
+  responses:
+    '200':
+      description: OK
+    '400':
+      description: Error
