@@ -1,5 +1,12 @@
  get:
   summary: Retrieve serial record
+  parameters:
+    - name: uuid
+      in: path
+      description: The UUID of the serial record to be fetched
+      required: true
+      schema:
+        type: uuid
   responses:
     '200':
       description: OK
