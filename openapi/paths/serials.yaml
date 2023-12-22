@@ -1,0 +1,40 @@
+get:
+  tags:
+    - Tag
+  summary: Get a set of serial records
+  operationId: getSerials
+  security:
+    - api_key: []
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/serialResults.yaml
+    '400':
+      description: Error
+post:
+  tags:
+    - Tag
+  summary: Create serial record
+  operationId: postSerial
+  security:
+    - api_key: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Serial.yaml
+    description: requestBody description
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Serial.yaml
+    '400':
+      description: Error
+      

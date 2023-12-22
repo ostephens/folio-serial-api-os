@@ -1,0 +1,32 @@
+type: object
+required:
+  - status
+properties:
+  id:
+    type: string
+    format: uuid
+  description:
+    type: string
+  serialStatus:
+    oneOf:
+      - type: string
+      - $ref: ./RefData.yaml
+  orderLine:
+    type: object
+    $ref: ./PurchaseOrderLine.yaml
+  serialRulesets:
+    type: array
+    items: 
+      type: object
+      $ref: ./serialRuleset.yaml
+  notes:
+    type: array
+    items:
+      type: object
+      $ref: ./Note.yaml
+  dateCreated:
+    type: string
+    format: datetime
+  lastUpdated:
+    type: string
+    format: datetime

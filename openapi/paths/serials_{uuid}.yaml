@@ -1,0 +1,52 @@
+get:
+  tags:
+    - Tag
+  summary: Get a specified serial record
+  operationId: getSerial
+  security:
+    - api_key: []
+  parameters:
+    - name: uuid
+      in: path
+      description: The uuid of the serial record to be fetched
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Serial.yaml
+    '400':
+      description: Error
+put:
+  summary: Update serial record
+  operationId: putSerial
+  security:
+    - api_key: []
+  parameters:
+    - name: uuid
+      in: path
+      description: The uuid of the serial record to be put
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Serial.yaml
+    description: requestBody description
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Serial.yaml
+    '400':
+      description: Error
+      

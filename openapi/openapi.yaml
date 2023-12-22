@@ -7,16 +7,16 @@ servers:
   - url: 'https://folio-snapshot-okapi.dev.folio.org'
   - url: 'https://folio-snapshot-2-okapi.dev.folio.org'
 paths:
-  /serials-management/refdata:
-    $ref: 'paths/serials_refdata_{domain}_{property}.yaml'
-  /serials-management/serials/{serialsUUID}:
-    $ref: paths/serials_uuid.yaml
+  /serials-management/serials:
+    $ref: ./paths/serials.yaml  
+  /serials-management/serials/{uuid}:
+    $ref: ./paths/serials_{uuid}.yaml
   /serials-management/rulesets:
-    $ref: 'paths/rulesets.yaml'
+    $ref: ./paths/rulesets.yaml
   /serials-management/predictedPieces/generate:
-    $ref: 'paths/predictedpieces_generate.yaml'
+    $ref: ./paths/predictedpieces_generate.yaml
   /serials-management/predictedPieces/create:
-    $ref: 'paths/predictedpieces_create.yaml'
+    $ref: ./paths/predictedpieces_create.yaml
 components:
   securitySchemes:
     api_key:
