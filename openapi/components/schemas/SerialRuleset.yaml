@@ -1,0 +1,26 @@
+type: object
+required:
+  - rulesetStatus
+  - templateConfig
+  - recurrence
+  - owner
+properties:
+  id:
+    type: string
+    format: uuid
+  rulesetStatus:
+    oneOf:
+      - type: string
+      - $ref: ./RefData.yaml
+  description:
+    type: string
+  recurrence:
+    $ref: Recurrence.yaml
+  omission:
+    $ref: Omission.yaml
+  combination:
+    $ref: Combination.yaml
+  templateConfig:
+    $ref: Omission.yaml
+  owner:
+    $ref: Serial.yaml

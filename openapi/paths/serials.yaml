@@ -1,6 +1,4 @@
 get:
-  tags:
-    - Tag
   summary: Get a set of serial records
   operationId: getSerials
   security:
@@ -15,8 +13,6 @@ get:
     '400':
       description: Error
 post:
-  tags:
-    - Tag
   summary: Create serial record
   operationId: postSerial
   security:

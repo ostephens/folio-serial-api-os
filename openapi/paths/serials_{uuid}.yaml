@@ -1,6 +1,4 @@
 get:
-  tags:
-    - Tag
   summary: Get a specified serial record
   operationId: getSerial
   security:

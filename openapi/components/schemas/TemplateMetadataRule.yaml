@@ -1,0 +1,15 @@
+type: object
+required: 
+  - owner
+  - templateMetadataRuleType
+  - ruleType
+properties:
+  id:
+    type: string
+    format: uuid
+  owner:
+    $ref: TemplateConfiguration.yaml
+  templateMetadataRuleType:
+    $ref: TemplateMetadataRuleType.yaml
+  ruleType:
+    $ref: RuleType.yaml

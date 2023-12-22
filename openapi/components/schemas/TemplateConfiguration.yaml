@@ -1,0 +1,19 @@
+type: object
+required: 
+  - owner
+  - rules
+  - templateString
+properties:
+  id:
+    type: string
+    format: uuid
+  owner: 
+    $ref: SerialRuleset.yaml
+  templateString:
+    type: string
+  rules:
+    type: array
+    items: 
+      $ref: TemplateMetadataRule.yaml
+    
+  

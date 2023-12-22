@@ -1,0 +1,24 @@
+type: object
+required:
+  - timeUnit
+properties:
+  timeUnit:
+    $ref: TimeUnit.yaml
+  period:
+    type: integer
+  issues:
+    type: integer
+  rules:
+    type: array
+    items:
+      $ref: RecurrenceRule.yaml
+  omission:
+    $ref: Omission.yaml
+  combination:
+    $ref: Combination.yaml
+  templateConfig:
+    $ref: TemplateConfiguration.yaml
+  owner:
+    $ref: Serial.yaml
+  rulesetNumber:
+    type: string

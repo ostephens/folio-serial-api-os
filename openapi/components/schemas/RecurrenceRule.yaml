@@ -1,0 +1,11 @@
+type: object
+properties:
+  ordinal:
+    type: integer
+  pattern:
+    type: string
+    format: uuid
+  patternType:
+    $ref: RecurrencePatternType.yaml
+  timeUnit:
+    $ref: TimeUnit.yaml
