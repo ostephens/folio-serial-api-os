@@ -1,0 +1,494 @@
+openapi: 3.1.0
+info:
+  version: 0.0.1
+  title: Folio Serials Management
+  description: API for the Folio library services platform mod-serials-management app
+servers:
+  - url: https://folio-snapshot-okapi.dev.folio.org
+  - url: https://folio-snapshot-2-okapi.dev.folio.org
+paths:
+  /serials-management/serials:
+    get:
+      summary: Get a set of serial records
+      operationId: getSerials
+      security:
+        - api_key: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/serialResults'
+        '400':
+          description: Error
+    post:
+      summary: Create serial record
+      operationId: postSerial
+      security:
+        - api_key: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Serial'
+        description: requestBody description
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Serial'
+        '400':
+          description: Error
+  /serials-management/serials/{uuid}:
+    get:
+      summary: Get a specified serial record
+      operationId: getSerial
+      security:
+        - api_key: []
+      parameters:
+        - name: uuid
+          in: path
+          description: The uuid of the serial record to be fetched
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Serial'
+        '400':
+          description: Error
+    put:
+      summary: Update serial record
+      operationId: putSerial
+      security:
+        - api_key: []
+      parameters:
+        - name: uuid
+          in: path
+          description: The uuid of the serial record to be put
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Serial'
+        description: requestBody description
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Serial'
+        '400':
+          description: Error
+  /serials-management/rulesets:
+    post:
+      summary: Create ruleset record
+      operationId: postRuleset
+      security:
+        - api_key: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/serialRuleset'
+        description: Ruleset JSON
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/serialRuleset'
+        '400':
+          description: Error
+  /serials-management/predictedPieces/generate:
+    post:
+      summary: Preview predicted pieces
+      operationId: previewPieces
+      security:
+        - api_key: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/serialRuleset'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pieceSet'
+        '400':
+          description: Error
+  /serials-management/predictedPieces/create:
+    post:
+      summary: Create predicted pieces
+      operationId: createPieces
+      security:
+        - api_key: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/serialRuleset'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pieceSet'
+        '400':
+          description: Error
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: x-okapi-token
+  schemas:
+    RefData:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        label:
+          type: string
+        value:
+          type: string
+    PurchaseOrderLine:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        owner:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+        poLineId:
+          type: string
+          format: uuid
+    TimeUnit:
+      type: object
+      properties:
+        value:
+          type: string
+          enum:
+            - day
+            - week
+            - month
+            - year
+        id:
+          type: string
+          format: uuid
+        label:
+          type: string
+    RecurrencePatternType:
+      type: object
+      properties:
+        value:
+          type: string
+          enum:
+            - day
+            - week
+            - month_date
+            - month_weekday
+            - year_date
+            - year_weekday
+            - year_month_weekday
+        id:
+          type: string
+          format: uuid
+        label:
+          type: string
+    RecurrenceRule:
+      type: object
+      properties:
+        ordinal:
+          type: integer
+        pattern:
+          type: string
+          format: uuid
+        patternType:
+          $ref: '#/components/schemas/RecurrencePatternType'
+        timeUnit:
+          $ref: '#/components/schemas/TimeUnit'
+    OmissionPatternType:
+      type: object
+      properties:
+        value:
+          type: string
+          enum:
+            - day
+            - day_month
+            - day_week
+            - day_weekday
+            - day_week_month
+            - week
+            - week_month
+            - month
+            - issue
+            - issue_week
+            - issue_week_month
+            - issue_month
+        id:
+          type: string
+          format: uuid
+        label:
+          type: string
+    OmissionRule:
+      type: object
+      properties:
+        ordinal:
+          type: integer
+        pattern:
+          type: string
+          format: uuid
+        patternType:
+          $ref: '#/components/schemas/OmissionPatternType'
+        timeUnit:
+          $ref: '#/components/schemas/TimeUnit'
+    Omission:
+      type: object
+      properties:
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/OmissionRule'
+    CombinationPatternType:
+      type: object
+      properties:
+        value:
+          type: string
+          enum:
+            - issue
+            - issue_week
+            - issue_week_month
+            - issue_month
+        id:
+          type: string
+          format: uuid
+        label:
+          type: string
+    CombinationRule:
+      type: object
+      properties:
+        ordinal:
+          type: integer
+        pattern:
+          type: string
+          format: uuid
+        patternType:
+          $ref: '#/components/schemas/CombinationPatternType'
+        timeUnit:
+          $ref: '#/components/schemas/TimeUnit'
+    Combination:
+      type: object
+      properties:
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/CombinationRule'
+    Recurrence:
+      type: object
+      required:
+        - timeUnit
+      properties:
+        timeUnit:
+          $ref: '#/components/schemas/TimeUnit'
+        period:
+          type: integer
+        issues:
+          type: integer
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecurrenceRule'
+        omission:
+          $ref: '#/components/schemas/Omission'
+        combination:
+          $ref: '#/components/schemas/Combination'
+        templateConfig:
+          $ref: '#/components/schemas/TemplateConfiguration'
+        owner:
+          $ref: '#/components/schemas/Serial'
+        rulesetNumber:
+          type: string
+    Serial:
+      type: object
+      required:
+        - status
+      properties:
+        id:
+          type: string
+          format: uuid
+        description:
+          type: string
+        serialStatus:
+          oneOf:
+            - type: string
+            - $ref: '#/components/schemas/RefData'
+        orderLine:
+          type: object
+          $ref: '#/components/schemas/PurchaseOrderLine'
+        serialRulesets:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/serialRuleset'
+        notes:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Note'
+        dateCreated:
+          type: string
+          format: datetime
+        lastUpdated:
+          type: string
+          format: datetime
+    SerialRuleset:
+      type: object
+      required:
+        - rulesetStatus
+        - templateConfig
+        - recurrence
+        - owner
+      properties:
+        id:
+          type: string
+          format: uuid
+        rulesetStatus:
+          oneOf:
+            - type: string
+            - $ref: '#/components/schemas/RefData'
+        description:
+          type: string
+        recurrence:
+          $ref: '#/components/schemas/Recurrence'
+        omission:
+          $ref: '#/components/schemas/Omission'
+        combination:
+          $ref: '#/components/schemas/Combination'
+        templateConfig:
+          $ref: '#/components/schemas/Omission'
+        owner:
+          $ref: '#/components/schemas/Serial'
+    TemplateConfiguration:
+      type: object
+      required:
+        - owner
+        - rules
+        - templateString
+      properties:
+        id:
+          type: string
+          format: uuid
+        owner:
+          $ref: '#/components/schemas/SerialRuleset'
+        templateString:
+          type: string
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateMetadataRule'
+    TemplateMetadataRuleType:
+      type: object
+    RuleType:
+      type: object
+    TemplateMetadataRule:
+      type: object
+      required:
+        - owner
+        - templateMetadataRuleType
+        - ruleType
+      properties:
+        id:
+          type: string
+          format: uuid
+        owner:
+          $ref: '#/components/schemas/TemplateConfiguration'
+        templateMetadataRuleType:
+          $ref: '#/components/schemas/TemplateMetadataRuleType'
+        ruleType:
+          $ref: '#/components/schemas/RuleType'
+    serialRuleset:
+      type: object
+      required:
+        - rulesetStatus
+        - templateConfig
+        - recurrence
+        - owner
+      properties:
+        id:
+          type: string
+          format: uuid
+        rulesetStatus:
+          oneOf:
+            - type: string
+            - $ref: '#/components/schemas/RefData'
+        description:
+          type: string
+        recurrence:
+          $ref: '#/components/schemas/Recurrence'
+        omission:
+          $ref: '#/components/schemas/Omission'
+        combination:
+          $ref: '#/components/schemas/Combination'
+        templateConfig:
+          $ref: '#/components/schemas/Omission'
+        owner:
+          $ref: '#/components/schemas/Serial'
+    Note:
+      type: object
+      required:
+        - text
+      properties:
+        id:
+          type: string
+          format: uuid
+        text:
+          type: string
+    serialResults:
+      type: object
+      required:
+        - results
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Serial'
+        meta:
+          type: object
+        page:
+          type: integer
+        pageSize:
+          type: integer
+        total:
+          type: integer
+        totalPages:
+          type: integer
+        totalRecords:
+          type: integer
+    pieceSet:
+      type: object
