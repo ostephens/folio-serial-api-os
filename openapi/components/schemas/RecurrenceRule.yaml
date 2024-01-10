@@ -3,8 +3,14 @@ properties:
   ordinal:
     type: integer
   pattern:
-    type: string
-    format: uuid
+    oneOf: 
+      - $ref: RecurrencePatternDay.yaml
+      - $ref: RecurrencePatternMonthDate.yaml
+      - $ref: RecurrencePatternMonthWeekday.yaml
+      - $ref: RecurrencePatternWeek.yaml
+      - $ref: RecurrencePatternYearDate.yaml
+      - $ref: RecurrencePatternYearMonthWeekday.yaml
+      - $ref: RecurrencePatternYearWeekday.yaml
   patternType:
     $ref: RecurrencePatternType.yaml
   timeUnit:
