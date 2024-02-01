@@ -6,3 +6,7 @@ properties:
   owner:
     type: string
     format: uuid
+  day:
+    type: integer
+    maximum: 31
+    minimum: 1

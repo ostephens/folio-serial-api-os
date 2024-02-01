@@ -1,14 +1,13 @@
 type: object
 properties:
-  id:
-    type: string
-    format: uuid
   owner:
     type: object
     properties:
       id:
         type: string
         format: uuid
-  poLineId:
+  title:
+    type: string
+  titleId:
     type: string
     format: uuid

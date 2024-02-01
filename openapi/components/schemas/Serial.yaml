@@ -13,7 +13,7 @@ properties:
       - $ref: ./RefData.yaml
   orderLine:
     type: object
-    $ref: ./PurchaseOrderLine.yaml
+    $ref: ./SerialOrderLine.yaml
   serialRulesets:
     type: array
     items: 
@@ -23,7 +23,7 @@ properties:
     type: array
     items:
       type: object
-      $ref: ./Note.yaml
+      $ref: ./SerialNote.yaml
   dateCreated:
     type: string
     format: datetime
