@@ -1,0 +1,28 @@
+type: object
+required: 
+  - startDate
+  - pieces
+  - ruleSet
+properties: 
+  dateCreated:
+    type: string
+    format: datetime
+  id:
+    type: string
+    format: uuid
+  lastUpdated:
+    type: string
+    format: datetime
+  pieces:
+    type: array
+    items: 
+      type: object
+      $ref: ./InternalPiece.yaml
+  ruleset:
+    type: object
+    $ref: SerialRuleset.yaml
+  startDate:
+    type: string
+    format: date
+  note: 
+    type: string

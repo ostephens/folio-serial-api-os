@@ -1,0 +1,12 @@
+type: object
+properties: 
+  id:
+    type: string
+    format: uuid
+  templateString:
+    type: string
+  label:
+    type: string
+  receivingId:
+    type: string
+    format: uuid

@@ -1,0 +1,14 @@
+get:
+  summary: Get a set of predicted piece sets
+  operationId: getPredictedPieceSets
+  security:
+    - api_key: []
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/PredictedPieceSetResults.yaml
+    '400':
+      description: Error

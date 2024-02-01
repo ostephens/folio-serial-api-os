@@ -1,0 +1,22 @@
+get:
+  summary: Get a specified predicted piece set
+  operationId: getPredictedPieceSet
+  security:
+    - api_key: []
+  parameters:
+    - name: uuid
+      in: path
+      description: The uuid of the predicted piece set to be fetched
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/PredictedPieceSet.yaml
+    '400':
+      description: Error
