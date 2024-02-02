@@ -6,13 +6,14 @@ info:
 servers:
   - url: https://folio-snapshot-okapi.dev.folio.org
   - url: https://folio-snapshot-2-okapi.dev.folio.org
+security:
+  - accessToken: []
+  - okapiToken: []
 paths:
   /serials-management/serials:
     get:
       summary: Get a set of serial records
       operationId: getSerials
-      security:
-        - api_key: []
       responses:
         '200':
           description: OK
@@ -22,11 +23,11 @@ paths:
                 $ref: '#/components/schemas/serialResults'
         '400':
           description: Error
+        '404':
+          description: Not found error
     post:
       summary: Create serial record
       operationId: postSerial
-      security:
-        - api_key: []
       requestBody:
         content:
           application/json:
@@ -43,12 +44,12 @@ paths:
                 $ref: '#/components/schemas/Serial'
         '400':
           description: Error
+        '404':
+          description: Not found error
   /serials-management/serials/{uuid}:
     get:
       summary: Get a specified serial record
       operationId: getSerial
-      security:
-        - api_key: []
       parameters:
         - name: uuid
           in: path
@@ -66,11 +67,11 @@ paths:
                 $ref: '#/components/schemas/Serial'
         '400':
           description: Error
+        '404':
+          description: Not found error
     put:
       summary: Update serial record
       operationId: putSerial
-      security:
-        - api_key: []
       parameters:
         - name: uuid
           in: path
@@ -94,12 +95,12 @@ paths:
                 $ref: '#/components/schemas/Serial'
         '400':
           description: Error
+        '404':
+          description: Not found error
   /serials-management/rulesets:
     post:
       summary: Create ruleset record
       operationId: postRuleset
-      security:
-        - api_key: []
       requestBody:
         content:
           application/json:
@@ -115,13 +116,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/serialRuleset'
         '400':
-          description: Error
+          description: Bad request error
+        '404':
+          description: Not found error
   /serials-management/predictedPieces:
     get:
       summary: Get a set of predicted piece sets
       operationId: getPredictedPieceSets
-      security:
-        - api_key: []
       responses:
         '200':
           description: OK
@@ -131,12 +132,12 @@ paths:
                 $ref: '#/components/schemas/PredictedPieceSetResults'
         '400':
           description: Error
+        '404':
+          description: Not found error
   /serials-management/predictedPieces/generate:
     post:
       summary: Preview predicted pieces
       operationId: previewPieces
-      security:
-        - api_key: []
       requestBody:
         content:
           application/json:
@@ -151,12 +152,12 @@ paths:
                 $ref: '#/components/schemas/PredictedPieceSet'
         '400':
           description: Error
+        '404':
+          description: Not found error
   /serials-management/predictedPieces/create:
     post:
       summary: Create predicted pieces
       operationId: createPieces
-      security:
-        - api_key: []
       requestBody:
         content:
           application/json:
@@ -171,12 +172,18 @@ paths:
                 $ref: '#/components/schemas/PredictedPieceSet'
         '400':
           description: Error
+        '404':
+          description: Not found error
 components:
   securitySchemes:
-    api_key:
+    okapiToken:
       type: apiKey
       in: header
       name: x-okapi-token
+    accessToken:
+      type: apiKey
+      in: cookie
+      name: folioAccessToken
   schemas:
     RefData:
       type: object
