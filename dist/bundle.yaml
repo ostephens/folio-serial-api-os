@@ -56,6 +56,7 @@ paths:
           required: true
           schema:
             type: string
+            format: uuid
       responses:
         '200':
           description: OK
@@ -115,6 +116,21 @@ paths:
                 $ref: '#/components/schemas/serialRuleset'
         '400':
           description: Error
+  /serials-management/predictedPieces:
+    get:
+      summary: Get a set of predicted piece sets
+      operationId: getPredictedPieceSets
+      security:
+        - api_key: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PredictedPieceSetResults'
+        '400':
+          description: Error
   /serials-management/predictedPieces/generate:
     post:
       summary: Preview predicted pieces
@@ -132,7 +148,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/pieceSet'
+                $ref: '#/components/schemas/PredictedPieceSet'
         '400':
           description: Error
   /serials-management/predictedPieces/create:
@@ -152,7 +168,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/pieceSet'
+                $ref: '#/components/schemas/PredictedPieceSet'
         '400':
           description: Error
 components:
@@ -172,19 +188,18 @@ components:
           type: string
         value:
           type: string
-    PurchaseOrderLine:
+    SerialOrderLine:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
         owner:
           type: object
           properties:
             id:
               type: string
               format: uuid
-        poLineId:
+        title:
+          type: string
+        titleId:
           type: string
           format: uuid
     TimeUnit:
@@ -202,6 +217,113 @@ components:
           format: uuid
         label:
           type: string
+    RecurrencePatternDay:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        owner:
+          type: string
+          format: uuid
+    RecurrencePatternMonthDate:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        owner:
+          type: string
+          format: uuid
+        day:
+          type: integer
+          maximum: 31
+          minimum: 1
+    RecurrencePatternMonthWeekday:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        owner:
+          type: string
+          format: uuid
+        week:
+          type: integer
+          minimum: 1
+          maximum: 4
+        weekday:
+          oneOf:
+            - type: string
+            - $ref: '#/components/schemas/RefData'
+    RecurrencePatternWeek:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        owner:
+          type: string
+          format: uuid
+        weekday:
+          oneOf:
+            - type: string
+            - $ref: '#/components/schemas/RefData'
+    RecurrencePatternYearDate:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        owner:
+          type: string
+          format: uuid
+        day:
+          type: integer
+          minimum: 1
+          maximum: 31
+        month:
+          oneOf:
+            - type: string
+            - $ref: '#/components/schemas/RefData'
+    RecurrencePatternYearMonthWeekday:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        owner:
+          type: string
+          format: uuid
+        week:
+          type: integer
+          minimum: 1
+          maximum: 4
+        weekday:
+          oneOf:
+            - type: string
+            - $ref: '#/components/schemas/RefData'
+        month:
+          oneOf:
+            - type: string
+            - $ref: '#/components/schemas/RefData'
+    RecurrencePatternYearWeekday:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        owner:
+          type: string
+          format: uuid
+        week:
+          type: integer
+          minimum: 1
+          maximum: 4
+        weekday:
+          oneOf:
+            - type: string
+            - $ref: '#/components/schemas/RefData'
     RecurrencePatternType:
       type: object
       properties:
@@ -226,8 +348,14 @@ components:
         ordinal:
           type: integer
         pattern:
-          type: string
-          format: uuid
+          oneOf:
+            - $ref: '#/components/schemas/RecurrencePatternDay'
+            - $ref: '#/components/schemas/RecurrencePatternMonthDate'
+            - $ref: '#/components/schemas/RecurrencePatternMonthWeekday'
+            - $ref: '#/components/schemas/RecurrencePatternWeek'
+            - $ref: '#/components/schemas/RecurrencePatternYearDate'
+            - $ref: '#/components/schemas/RecurrencePatternYearMonthWeekday'
+            - $ref: '#/components/schemas/RecurrencePatternYearWeekday'
         patternType:
           $ref: '#/components/schemas/RecurrencePatternType'
         timeUnit:
@@ -349,7 +477,7 @@ components:
             - $ref: '#/components/schemas/RefData'
         orderLine:
           type: object
-          $ref: '#/components/schemas/PurchaseOrderLine'
+          $ref: '#/components/schemas/SerialOrderLine'
         serialRulesets:
           type: array
           items:
@@ -359,7 +487,7 @@ components:
           type: array
           items:
             type: object
-            $ref: '#/components/schemas/Note'
+            $ref: '#/components/schemas/SerialNote'
         dateCreated:
           type: string
           format: datetime
@@ -411,15 +539,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TemplateMetadataRule'
-    TemplateMetadataRuleType:
-      type: object
-    RuleType:
-      type: object
     TemplateMetadataRule:
       type: object
       required:
         - owner
-        - templateMetadataRuleType
+        - index
         - ruleType
       properties:
         id:
@@ -427,10 +551,12 @@ components:
           format: uuid
         owner:
           $ref: '#/components/schemas/TemplateConfiguration'
-        templateMetadataRuleType:
-          $ref: '#/components/schemas/TemplateMetadataRuleType'
+        index:
+          type: integer
         ruleType:
-          $ref: '#/components/schemas/RuleType'
+          oneOf:
+            - type: string
+            - $ref: '#/components/schemas/RefData'
     serialRuleset:
       type: object
       required:
@@ -458,7 +584,7 @@ components:
           $ref: '#/components/schemas/Omission'
         owner:
           $ref: '#/components/schemas/Serial'
-    Note:
+    SerialNote:
       type: object
       required:
         - text
@@ -466,8 +592,10 @@ components:
         id:
           type: string
           format: uuid
-        text:
+        note:
           type: string
+        owner:
+          $ref: '#/components/schemas/Serial'
     serialResults:
       type: object
       required:
@@ -490,5 +618,67 @@ components:
           type: integer
         totalRecords:
           type: integer
-    pieceSet:
+    InternalPiece:
       type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        templateString:
+          type: string
+        label:
+          type: string
+        receivingId:
+          type: string
+          format: uuid
+    PredictedPieceSet:
+      type: object
+      required:
+        - startDate
+        - pieces
+        - ruleSet
+      properties:
+        dateCreated:
+          type: string
+          format: datetime
+        id:
+          type: string
+          format: uuid
+        lastUpdated:
+          type: string
+          format: datetime
+        pieces:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/InternalPiece'
+        ruleset:
+          type: object
+          $ref: '#/components/schemas/SerialRuleset'
+        startDate:
+          type: string
+          format: date
+        note:
+          type: string
+    PredictedPieceSetResults:
+      type: object
+      required:
+        - results
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/PredictedPieceSet'
+        meta:
+          type: object
+        page:
+          type: integer
+        pageSize:
+          type: integer
+        total:
+          type: integer
+        totalPages:
+          type: integer
+        totalRecords:
+          type: integer
