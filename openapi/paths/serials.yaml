@@ -12,6 +12,8 @@ get:
             $ref: ../components/schemas/serialResults.yaml
     '400':
       description: Error
+    '404':
+      description: Not found error
 post:
   summary: Create serial record
   operationId: postSerial
@@ -33,4 +35,6 @@ post:
             $ref: ../components/schemas/Serial.yaml
     '400':
       description: Error
+    '404':
+      description: Not found error
       
