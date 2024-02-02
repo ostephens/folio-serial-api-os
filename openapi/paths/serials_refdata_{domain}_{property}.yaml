@@ -1,5 +1,5 @@
 get:
-  operationId: getRefDat
+  operationId: getRefData
   summary: Returns list of reference data values for specified domain/property
   parameters:
     - $ref: ../components/parameters/filters.yaml

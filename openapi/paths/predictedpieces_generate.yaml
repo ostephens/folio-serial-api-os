@@ -1,8 +1,6 @@
 post:
   summary: Preview predicted pieces
   operationId: previewPieces
-  security:
-    - api_key: []
   requestBody:
     content:
       application/json:
@@ -17,3 +15,5 @@ post:
             $ref: ../components/schemas/PredictedPieceSet.yaml
     '400':
       description: Error
+    '404':
+      description: Not found error

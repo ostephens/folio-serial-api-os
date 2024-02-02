@@ -21,7 +21,14 @@ paths:
     $ref: ./paths/predictedpieces_create.yaml
 components:
   securitySchemes:
-    api_key:
+      okapiToken:
         type: apiKey
         in: header
         name: x-okapi-token
+      accessToken:
+        type: apiKey
+        in: cookie
+        name: folioAccessToken
+security:
+  - accessToken: []
+  - okapiToken: []

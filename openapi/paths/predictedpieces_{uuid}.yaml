@@ -1,8 +1,6 @@
 get:
   summary: Get a specified predicted piece set
   operationId: getPredictedPieceSet
-  security:
-    - api_key: []
   parameters:
     - name: uuid
       in: path
@@ -18,5 +16,7 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/PredictedPieceSet.yaml
-    '400':
-      description: Error
+      '400':
+        description: Error
+      '404':
+        description: Not found error

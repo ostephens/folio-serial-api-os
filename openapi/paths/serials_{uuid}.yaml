@@ -1,8 +1,6 @@
 get:
   summary: Get a specified serial record
   operationId: getSerial
-  security:
-    - api_key: []
   parameters:
     - name: uuid
       in: path
@@ -20,11 +18,11 @@ get:
             $ref: ../components/schemas/Serial.yaml
     '400':
       description: Error
+    '404':
+      description: Not found error
 put:
   summary: Update serial record
   operationId: putSerial
-  security:
-    - api_key: []
   parameters:
     - name: uuid
       in: path
@@ -48,4 +46,6 @@ put:
             $ref: ../components/schemas/Serial.yaml
     '400':
       description: Error
+    '404':
+      description: Not found error
       

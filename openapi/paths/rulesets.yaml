@@ -1,8 +1,6 @@
 post:
   summary: Create ruleset record
   operationId: postRuleset
-  security:
-    - api_key: []
   requestBody:
     content:
       application/json:
@@ -18,5 +16,6 @@ post:
           schema:
             $ref: ../components/schemas/serialRuleset.yaml
     '400':
-      description: Error
-      
+      description: Bad request error
+    '404':
+      description: Not found error

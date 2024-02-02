@@ -1,8 +1,6 @@
 post:
   summary: Create predicted pieces
   operationId: createPieces
-  security:
-    - api_key: []
   requestBody:
     content:
       application/json:

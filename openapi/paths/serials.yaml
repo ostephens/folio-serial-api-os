@@ -1,8 +1,6 @@
 get:
   summary: Get a set of serial records
   operationId: getSerials
-  security:
-    - api_key: []
   responses:
     '200':
       description: OK
@@ -17,8 +15,6 @@ get:
 post:
   summary: Create serial record
   operationId: postSerial
-  security:
-    - api_key: []
   requestBody:
     content:
       application/json:
