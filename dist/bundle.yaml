@@ -10,10 +10,49 @@ security:
   - accessToken: []
   - okapiToken: []
 paths:
+  /serials-management/refdata:
+    get:
+      operationId: getRefData
+      summary: Returns list of reference data values for specified domain
+      parameters:
+        - $ref: '#/components/parameters/filters'
+        - $ref: '#/components/parameters/match'
+        - $ref: '#/components/parameters/term'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/stats'
+        - $ref: '#/components/parameters/perPage'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/RefDataResults'
+                  - $ref: '#/components/schemas/RefDataResultsArray'
+        '400':
+          description: Bad request error
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpError'
+        '500':
+          description: Internal server error
   /serials-management/serials:
     get:
       summary: Get a set of serial records
       operationId: getSerials
+      parameters:
+        - $ref: '#/components/parameters/filters'
+        - $ref: '#/components/parameters/match'
+        - $ref: '#/components/parameters/term'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/stats'
+        - $ref: '#/components/parameters/perPage'
+        - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: OK
@@ -22,9 +61,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/serialResults'
         '400':
-          description: Error
-        '404':
-          description: Not found error
+          description: Bad request error
+        '500':
+          description: Internal server error
     post:
       summary: Create serial record
       operationId: postSerial
@@ -43,9 +82,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/Serial'
         '400':
-          description: Error
+          description: Bad request error
         '404':
           description: Not found error
+        '500':
+          description: Internal server error
   /serials-management/serials/{uuid}:
     get:
       summary: Get a specified serial record
@@ -66,9 +107,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/Serial'
         '400':
-          description: Error
+          description: Bad request error
         '404':
           description: Not found error
+        '500':
+          description: Internal server error
     put:
       summary: Update serial record
       operationId: putSerial
@@ -94,9 +137,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/Serial'
         '400':
-          description: Error
+          description: Bad request error
         '404':
           description: Not found error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpError'
+        '500':
+          description: Internal server error
   /serials-management/rulesets:
     post:
       summary: Create ruleset record
@@ -117,12 +166,20 @@ paths:
                 $ref: '#/components/schemas/serialRuleset'
         '400':
           description: Bad request error
-        '404':
-          description: Not found error
+        '500':
+          description: Internal server error
   /serials-management/predictedPieces:
     get:
       summary: Get a set of predicted piece sets
       operationId: getPredictedPieceSets
+      parameters:
+        - $ref: '#/components/parameters/filters'
+        - $ref: '#/components/parameters/match'
+        - $ref: '#/components/parameters/term'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/stats'
+        - $ref: '#/components/parameters/perPage'
+        - $ref: '#/components/parameters/offset'
       responses:
         '200':
           description: OK
@@ -131,9 +188,38 @@ paths:
               schema:
                 $ref: '#/components/schemas/PredictedPieceSetResults'
         '400':
-          description: Error
+          description: Bad request error
+        '500':
+          description: Internal server error
+  /serials-management/predictedPieces/{uuid}:
+    get:
+      summary: Get a specified predicted piece set
+      operationId: getPredictedPieceSet
+      parameters:
+        - name: uuid
+          in: path
+          description: The uuid of the predicted piece set to be fetched
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PredictedPieceSet'
+        '400':
+          description: Bad request error
         '404':
           description: Not found error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpError'
+        '500':
+          description: Internal server error
   /serials-management/predictedPieces/generate:
     post:
       summary: Preview predicted pieces
@@ -151,9 +237,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/PredictedPieceSet'
         '400':
-          description: Error
+          description: Bad request error
         '404':
           description: Not found error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpError'
+        '500':
+          description: Internal server error
   /serials-management/predictedPieces/create:
     post:
       summary: Create predicted pieces
@@ -171,9 +263,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/PredictedPieceSet'
         '400':
-          description: Error
+          description: Bad request error
         '404':
           description: Not found error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpError'
+        '500':
+          description: Internal server error
 components:
   securitySchemes:
     okapiToken:
@@ -184,6 +282,49 @@ components:
       type: apiKey
       in: cookie
       name: folioAccessToken
+  parameters:
+    filters:
+      in: query
+      name: filters
+      required: false
+      schema:
+        type: string
+    match:
+      in: query
+      name: match
+      required: false
+      schema:
+        type: string
+    term:
+      in: query
+      name: term
+      required: false
+      schema:
+        type: string
+    sort:
+      in: query
+      name: sort
+      required: false
+      schema:
+        type: string
+    stats:
+      in: query
+      name: stats
+      required: false
+      schema:
+        type: boolean
+    perPage:
+      in: query
+      name: perPage
+      required: false
+      schema:
+        type: integer
+    offset:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
   schemas:
     RefData:
       type: object
@@ -194,6 +335,56 @@ components:
         label:
           type: string
         value:
+          type: string
+    RefDataCategory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        internal:
+          type: boolean
+        desc:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefData'
+    RefDataResults:
+      type: array
+      items:
+        $ref: '#/components/schemas/RefDataCategory'
+    RefDataResultsArray:
+      type: object
+      required:
+        - results
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefDataCategory'
+        meta:
+          type: object
+        page:
+          type: integer
+        pageSize:
+          type: integer
+        total:
+          type: integer
+        totalPages:
+          type: integer
+        totalRecords:
+          type: integer
+    HttpError:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+        message:
+          type: string
+        error:
+          type: integer
+        path:
           type: string
     SerialOrderLine:
       type: object
