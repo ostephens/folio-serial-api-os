@@ -1,7 +1,7 @@
 get:
-  summary: Get a set of predicted piece sets
-  operationId: getPredictedPieceSets
-  parameters: 
+  operationId: getRefData
+  summary: Returns list of reference data values for specified domain
+  parameters:
     - $ref: ../components/parameters/filters.yaml
     - $ref: ../components/parameters/match.yaml
     - $ref: ../components/parameters/term.yaml
@@ -11,12 +11,18 @@ get:
     - $ref: ../components/parameters/offset.yaml
   responses:
     '200':
-      description: OK
+      description: Success
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/PredictedPieceSetResults.yaml
+            oneOf:
+              - $ref: ../components/schemas/RefDataResults.yaml
+              - $ref: ../components/schemas/RefDataResultsArray.yaml
     '400':
       description: Error
     '404':
-      description: Not found error
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/HttpError.yaml
