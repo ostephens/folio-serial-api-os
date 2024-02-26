@@ -19,10 +19,12 @@ get:
               - $ref: ../components/schemas/RefDataResults.yaml
               - $ref: ../components/schemas/RefDataResultsArray.yaml
     '400':
-      description: Error
+      description: Bad request error
     '404':
       description: Not found
       content:
         application/json:
           schema:
             $ref: ../components/schemas/HttpError.yaml
+    '500':
+      description: Internal server error

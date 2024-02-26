@@ -14,6 +14,12 @@ post:
           schema:
             $ref: ../components/schemas/PredictedPieceSet.yaml
     '400':
-      description: Error
+      description: Bad request error
     '404':
       description: Not found error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/HttpError.yaml
+    '500':
+      description: Internal server error

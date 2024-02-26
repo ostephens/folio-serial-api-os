@@ -17,5 +17,5 @@ post:
             $ref: ../components/schemas/serialRuleset.yaml
     '400':
       description: Bad request error
-    '404':
-      description: Not found error
+    '500':
+      description: Internal server error

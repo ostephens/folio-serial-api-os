@@ -17,9 +17,9 @@ get:
           schema:
             $ref: ../components/schemas/serialResults.yaml
     '400':
-      description: Error
-    '404':
-      description: Not found error
+      description: Bad request error
+    '500':
+      description: Internal server error
 post:
   summary: Create serial record
   operationId: postSerial
@@ -38,7 +38,9 @@ post:
           schema:
             $ref: ../components/schemas/Serial.yaml
     '400':
-      description: Error
+      description: Bad request error
     '404':
       description: Not found error
+    '500':
+      description: Internal server error
       

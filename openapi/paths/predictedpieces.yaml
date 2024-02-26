@@ -17,6 +17,6 @@ get:
           schema:
             $ref: ../components/schemas/PredictedPieceSetResults.yaml
     '400':
-      description: Error
-    '404':
-      description: Not found error
+      description: Bad request error
+    '500':
+      description: Internal server error
