@@ -1,12 +1,12 @@
 type: object
 properties:
-  desc:
-    type: string
   id:
     type: string
     format: uuid
   internal:
     type: boolean
+  desc:
+    type: string
   values:
     type: array
     items:
