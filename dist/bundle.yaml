@@ -59,7 +59,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/serialResults'
+                oneOf:
+                  - $ref: '#/components/schemas/serialResults'
+                  - $ref: '#/components/schemas/serialResultsArray'
         '400':
           description: Bad request error
         '500':
@@ -186,7 +188,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PredictedPieceSetResults'
+                oneOf:
+                  - $ref: '#/components/schemas/PredictedPieceSetResults'
+                  - $ref: '#/components/schemas/PredictedPieceSetResultsArray'
         '400':
           description: Bad request error
         '500':
@@ -378,8 +382,6 @@ components:
     HttpError:
       type: object
       properties:
-        timestamp:
-          type: integer
         message:
           type: string
         error:
@@ -795,6 +797,10 @@ components:
         owner:
           $ref: '#/components/schemas/Serial'
     serialResults:
+      type: array
+      items:
+        $ref: '#/components/schemas/Serial'
+    serialResultsArray:
       type: object
       required:
         - results
@@ -802,7 +808,6 @@ components:
         results:
           type: array
           items:
-            type: object
             $ref: '#/components/schemas/Serial'
         meta:
           type: object
@@ -859,6 +864,10 @@ components:
         note:
           type: string
     PredictedPieceSetResults:
+      type: array
+      items:
+        $ref: '#/components/schemas/PredictedPieceSet'
+    PredictedPieceSetResultsArray:
       type: object
       required:
         - results
@@ -866,7 +875,6 @@ components:
         results:
           type: array
           items:
-            type: object
             $ref: '#/components/schemas/PredictedPieceSet'
         meta:
           type: object
