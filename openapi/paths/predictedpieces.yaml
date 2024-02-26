@@ -15,7 +15,9 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/PredictedPieceSetResults.yaml
+            oneOf:
+              - $ref: ../components/schemas/PredictedPieceSetResults.yaml
+              - $ref: ../components/schemas/PredictedPieceSetResultsArray.yaml
     '400':
       description: Bad request error
     '500':

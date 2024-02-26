@@ -1,21 +1,3 @@
-type: object
-required:
-  - results
-properties:
-  results:
-    type: array
-    items: 
-      type: object
-      $ref: ./PredictedPieceSet.yaml
-  meta:
-    type: object
-  page:
-    type: integer
-  pageSize:
-    type: integer
-  total:
-    type: integer
-  totalPages:
-    type: integer
-  totalRecords:
-    type: integer
+type: array
+items: 
+  $ref: ./PredictedPieceSet.yaml

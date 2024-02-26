@@ -15,7 +15,9 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/serialResults.yaml
+            oneOf:
+              - $ref: ../components/schemas/serialResults.yaml
+              - $ref: ../components/schemas/serialResultsArray.yaml
     '400':
       description: Bad request error
     '500':
