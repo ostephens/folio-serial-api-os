@@ -16,7 +16,7 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/PredictedPieceSet.yaml
-      '400':
-        description: Error
-      '404':
-        description: Not found error
+    '400':
+      description: Error
+    '404':
+      description: Not found error
