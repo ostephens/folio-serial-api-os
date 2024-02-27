@@ -7,19 +7,15 @@ post:
         schema:
           $ref: ../components/schemas/serialRuleset.yaml
   responses:
-    '200':
-      description: OK
+    '201':
+      description: Created
       content:
         application/json:
           schema:
             $ref: ../components/schemas/PredictedPieceSet.yaml
     '400':
       description: Bad request error
-    '404':
-      description: Not found error
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/HttpError.yaml
+    '403':
+      description: Forbidden
     '500':
       description: Internal server error

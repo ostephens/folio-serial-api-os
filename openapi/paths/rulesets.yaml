@@ -9,13 +9,15 @@ post:
     description: Ruleset JSON
     required: true
   responses:
-    '200':
-      description: OK
+    '201':
+      description: Created
       content:
         application/json:
           schema:
             $ref: ../components/schemas/serialRuleset.yaml
     '400':
       description: Bad request error
+    '403':
+      description: Forbidden
     '500':
       description: Internal server error

@@ -20,6 +20,8 @@ get:
               - $ref: ../components/schemas/serialResultsArray.yaml
     '400':
       description: Bad request error
+    '403':
+      description: Forbidden
     '500':
       description: Internal server error
 post:
@@ -33,16 +35,16 @@ post:
     description: requestBody description
     required: true
   responses:
-    '200':
-      description: OK
+    '201':
+      description: Created
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Serial.yaml
     '400':
       description: Bad request error
-    '404':
-      description: Not found error
+    '403':
+      description: Forbidden
     '500':
       description: Internal server error
       
