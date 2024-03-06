@@ -15,7 +15,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/Ruleset.yaml
+            $ref: ../components/schemas/SerialRuleset.yaml
     '400':
       description: Bad request error
     '403':
