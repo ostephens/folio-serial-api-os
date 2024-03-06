@@ -37,6 +37,28 @@ paths:
           description: Forbidden
         '500':
           description: Internal server error
+    post:
+      summary: Create new reference data
+      operationId: createRefData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefDataCategory'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefDataCategory'
+        '400':
+          description: Bad request error
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal server error
   /serials-management/serials:
     get:
       summary: Get a set of serial records
@@ -56,8 +78,8 @@ paths:
             application/json:
               schema:
                 oneOf:
-                  - $ref: '#/components/schemas/serialResults'
-                  - $ref: '#/components/schemas/serialResultsArray'
+                  - $ref: '#/components/schemas/SerialResults'
+                  - $ref: '#/components/schemas/SerialResultsArray'
         '400':
           description: Bad request error
         '403':
@@ -152,7 +174,59 @@ paths:
                 $ref: '#/components/schemas/HttpError'
         '500':
           description: Internal server error
+    delete:
+      summary: Delete a specified serial record
+      operationId: deleteSerial
+      parameters:
+        - name: uuid
+          in: path
+          description: The uuid of the serial record to be deleted
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad request error
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpError'
+        '500':
+          description: Internal server error
   /serials-management/rulesets:
+    get:
+      summary: Get a set of ruleset records
+      operationId: getRulesets
+      parameters:
+        - $ref: '#/components/parameters/filters'
+        - $ref: '#/components/parameters/match'
+        - $ref: '#/components/parameters/term'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/stats'
+        - $ref: '#/components/parameters/perPage'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/SerialRulesetResults'
+                  - $ref: '#/components/schemas/SerialRulesetResultsArray'
+        '400':
+          description: Bad request error
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal server error
     post:
       summary: Create ruleset record
       operationId: postRuleset
@@ -789,11 +863,11 @@ components:
           type: string
         owner:
           $ref: '#/components/schemas/Serial'
-    serialResults:
+    SerialResults:
       type: array
       items:
         $ref: '#/components/schemas/Serial'
-    serialResultsArray:
+    SerialResultsArray:
       type: object
       required:
         - results
@@ -823,6 +897,31 @@ components:
           type: integer
         path:
           type: string
+    SerialRulesetResults:
+      type: array
+      items:
+        $ref: '#/components/schemas/SerialRuleset'
+    SerialRulesetResultsArray:
+      type: object
+      required:
+        - results
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SerialRulesetResults'
+        meta:
+          type: object
+        page:
+          type: integer
+        pageSize:
+          type: integer
+        total:
+          type: integer
+        totalPages:
+          type: integer
+        totalRecords:
+          type: integer
     InternalPiece:
       type: object
       properties:
