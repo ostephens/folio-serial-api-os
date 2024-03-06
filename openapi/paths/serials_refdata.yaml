@@ -24,3 +24,25 @@ get:
       description: Forbidden
     '500':
       description: Internal server error
+post: 
+  summary: Create new reference data
+  operationId: createRefData
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/RefDataCategory.yaml
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/RefDataCategory.yaml
+    '400':
+      description: Bad request error
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal server error

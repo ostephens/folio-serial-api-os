@@ -1,10 +1,10 @@
 get:
-  summary: Get a specified serial record
-  operationId: getSerial
+  summary: Get a specified reference data category
+  operationId: getRefDataCategory
   parameters:
     - name: uuid
       in: path
-      description: The uuid of the serial record to be fetched
+      description: The uuid of the reference data category to be fetched
       required: true
       schema:
         type: string
@@ -15,7 +15,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/Serial.yaml
+            $ref: ../components/schemas/RefDataCategory.yaml
     '400':
       description: Bad request error
     '403':
@@ -29,12 +29,12 @@ get:
     '500':
       description: Internal server error
 put:
-  summary: Update serial record
-  operationId: putSerial
+  summary: Update reference data category
+  operationId: putRefDataCategory
   parameters:
     - name: uuid
       in: path
-      description: The uuid of the serial record to be put
+      description: The uuid of the reference data category to be put
       required: true
       schema:
         type: string
@@ -42,7 +42,7 @@ put:
     content:
       application/json:
         schema:
-          $ref: ../components/schemas/Serial.yaml
+          $ref: ../components/schemas/RefDataCategory.yaml
     description: requestBody description
     required: true
   responses:
@@ -51,7 +51,7 @@ put:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/Serial.yaml
+            $ref: ../components/schemas/RefDataCategory.yaml
     '400':
       description: Bad request error
     '404':
@@ -61,14 +61,14 @@ put:
           schema:
             $ref: ../components/schemas/HttpError.yaml
     '500':
-      description: Internal server error  
+      description: Internal server error
 delete:
-  summary: Delete a specified serial record
-  operationId: deleteSerial
+  summary: Delete a specified reference data category
+  operationId: deleteRefDataCategory
   parameters:
     - name: uuid
       in: path
-      description: The uuid of the serial record to be deleted
+      description: The uuid of the reference data category to be deleted
       required: true
       schema:
         type: string

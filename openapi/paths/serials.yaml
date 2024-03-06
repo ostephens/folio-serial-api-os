@@ -16,8 +16,8 @@ get:
         application/json:
           schema:
             oneOf:
-              - $ref: ../components/schemas/serialResults.yaml
-              - $ref: ../components/schemas/serialResultsArray.yaml
+              - $ref: ../components/schemas/SerialResults.yaml
+              - $ref: ../components/schemas/SerialResultsArray.yaml
     '400':
       description: Bad request error
     '403':
