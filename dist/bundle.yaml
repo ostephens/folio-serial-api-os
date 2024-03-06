@@ -13,7 +13,7 @@ paths:
   /serials-management/refdata:
     get:
       operationId: getRefData
-      summary: Returns list of reference data values for specified domain
+      summary: Get a set of reference data categories and values
       parameters:
         - $ref: '#/components/parameters/filters'
         - $ref: '#/components/parameters/match'
