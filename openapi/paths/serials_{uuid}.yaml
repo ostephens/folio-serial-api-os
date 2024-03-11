@@ -43,7 +43,6 @@ put:
       application/json:
         schema:
           $ref: ../components/schemas/Serial.yaml
-    description: requestBody description
     required: true
   responses:
     '200':
