@@ -21,10 +21,10 @@ paths:
     $ref: paths/rulesets.yaml
   /serials-management/rulesets/{uuid}:
     $ref: paths/rulesets_{uuid}.yaml
-  /serials-management/rulesets/{uuid}/activate:
-    $ref: paths/rulesets_{uuid}_activate.yaml
-  /serials-management/rulesets/{uuid}/deprecate:
-    $ref: paths/rulesets_{uuid}_deprecate.yaml
+  /serials-management/rulesets/{uuid}/active:
+    $ref: paths/rulesets_{uuid}_active.yaml
+  /serials-management/rulesets/{uuid}/deprecated:
+    $ref: paths/rulesets_{uuid}_deprecated.yaml
   /serials-management/rulesets/{uuid}/draft:
     $ref: paths/rulesets_{uuid}_draft.yaml
   /serials-management/predictedPieces:
