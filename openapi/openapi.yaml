@@ -29,6 +29,10 @@ paths:
     $ref: paths/rulesets_{uuid}_deprecated.yaml
   /serials-management/rulesets/{uuid}/draft:
     $ref: paths/rulesets_{uuid}_draft.yaml
+  /serials-management/rulesets/{uuid}/replaceAndDelete:
+    $ref: paths/rulesets_{uuid}_replaceanddelete.yaml
+  /serials-management/rulesets/{uuid}/replaceAndDeprecate:
+    $ref: paths/rulesets_{uuid}_replaceanddeprecate.yaml
   /serials-management/predictedPieces:
     $ref: paths/predictedpieces.yaml
   /serials-management/predictedPieces/{uuid}:
