@@ -7,6 +7,8 @@ servers:
   - url: 'https://folio-snapshot-okapi.dev.folio.org'
   - url: 'https://folio-snapshot-2-okapi.dev.folio.org'
 paths:
+  /serials-management/locales:
+    $ref: paths/locales.yaml
   /serials-management/refdata:
     $ref: paths/serials_refdata.yaml
   /serials-management/refdata/{uuid}:
