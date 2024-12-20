@@ -1,0 +1,11 @@
+type: object
+required:
+  - standard
+properties:
+  id:
+    type: string
+    format: uuid
+  userConfigured:
+    type: array
+    items:
+      $ref: ./UserConfiguredTemplateMetadata.yaml

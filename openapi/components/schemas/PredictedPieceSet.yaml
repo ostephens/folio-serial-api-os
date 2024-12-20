@@ -3,13 +3,19 @@ required:
   - startDate
   - pieces
   - ruleSet
-properties: 
+properties:
+  continuationPieceRecurrenceMetadata:
+    type: object 
+    $ref: ./TemplateMetadata.yaml
   dateCreated:
     type: string
     format: datetime
   id:
     type: string
     format: uuid
+  initialPieceRecurrenceMetadata:
+    type: object
+    $ref: ./TemplateMetadata.yaml
   lastUpdated:
     type: string
     format: datetime
