@@ -21,6 +21,6 @@ properties:
   combination:
     $ref: Combination.yaml
   templateConfig:
-    $ref: Omission.yaml
+    $ref: TemplateConfiguration.yaml
   owner:
     $ref: Serial.yaml
