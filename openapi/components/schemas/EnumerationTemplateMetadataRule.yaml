@@ -1,0 +1,11 @@
+type: object
+required: 
+  - ruleFormat
+properties:
+  id:
+    type: string
+    format: uuid
+  ruleFormat:
+    oneOf: 
+      - $ref: EnumerationNumericTMRF.yaml
+      - $ref: EnumerationTextualTMRF.yaml

@@ -1,7 +1,7 @@
 type: object
 required: 
-  - owner
   - index
+  - templateMetadataRuleType
   - ruleType
 properties:
   id:
@@ -13,5 +13,9 @@ properties:
     type: integer
   ruleType:
     oneOf: 
+      - $ref: ChronologyTemplateMetadataRule.yaml
+      - $ref: EnumerationTemplateMetadataRule.yaml
+  templateMetadataRuleType:
+    oneOf:
       - type: string
-      - $ref: ./RefData.yaml
+      - $ref: RefData.yaml
