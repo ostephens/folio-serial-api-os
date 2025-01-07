@@ -8,4 +8,4 @@ properties:
   userConfigured:
     type: array
     items:
-      $ref: ./UserConfiguredTemplateMetadata.yaml
+      $ref: UserConfiguredTemplateMetadata.yaml
