@@ -1,0 +1,6 @@
+allOf:
+  - $ref: InternalPiece.yaml
+  - type: object
+    properties: 
+      omissionRule:
+        $ref: OmissionRule.yaml

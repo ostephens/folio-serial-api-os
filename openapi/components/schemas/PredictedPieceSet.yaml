@@ -20,7 +20,10 @@ properties:
   pieces:
     type: array
     items: 
-      $ref: InternalPiece.yaml
+      anyOf:
+        - $ref: InternalCombinationPiece.yaml
+        - $ref: InternalOmissionPiece.yaml
+        - $ref: InternalRecurrencePiece.yaml
   ruleset:
     $ref: SerialRuleset.yaml
   startDate:
