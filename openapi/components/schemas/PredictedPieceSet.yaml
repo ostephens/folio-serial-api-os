@@ -4,9 +4,8 @@ required:
   - pieces
   - ruleSet
 properties:
-  continuationPieceRecurrenceMetadata:
-    type: object 
-    $ref: ./TemplateMetadata.yaml
+  continuationPieceRecurrenceMetadata: 
+    $ref: TemplateMetadata.yaml
   dateCreated:
     type: string
     format: datetime

@@ -13,4 +13,4 @@ properties:
   month:
     oneOf:
       - type: string
-      - $ref: ./RefData.yaml
+      - $ref: RefData.yaml

@@ -11,7 +11,7 @@ properties:
   rulesetStatus:
     oneOf:
       - type: string
-      - $ref: ./RefData.yaml
+      - $ref: RefData.yaml
   description:
     type: string
   recurrence:
