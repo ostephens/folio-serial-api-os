@@ -14,18 +14,15 @@ properties:
     type: string
     format: uuid
   initialPieceRecurrenceMetadata:
-    type: object
-    $ref: ./TemplateMetadata.yaml
+    $ref: TemplateMetadata.yaml
   lastUpdated:
     type: string
     format: datetime
   pieces:
     type: array
     items: 
-      type: object
-      $ref: ./InternalPiece.yaml
+      $ref: InternalPiece.yaml
   ruleset:
-    type: object
     $ref: SerialRuleset.yaml
   startDate:
     type: string

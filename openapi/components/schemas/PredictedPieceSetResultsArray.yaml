@@ -5,7 +5,7 @@ properties:
   results:
     type: array
     items: 
-      $ref: ./PredictedPieceSet.yaml
+      $ref: PredictedPieceSet.yaml
   meta:
     type: object
   page:

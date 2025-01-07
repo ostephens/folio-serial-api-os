@@ -10,20 +10,17 @@ properties:
   serialStatus:
     oneOf:
       - type: string
-      - $ref: ./RefData.yaml
+      - $ref: RefData.yaml
   orderLine:
-    type: object
-    $ref: ./SerialOrderLine.yaml
+    $ref: SerialOrderLine.yaml
   serialRulesets:
     type: array
     items: 
-      type: object
-      $ref: ./serialRuleset.yaml
+      $ref: serialRuleset.yaml
   notes:
     type: array
     items:
-      type: object
-      $ref: ./SerialNote.yaml
+      $ref: SerialNote.yaml
   dateCreated:
     type: string
     format: datetime
