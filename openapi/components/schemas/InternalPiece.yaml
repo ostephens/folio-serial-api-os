@@ -10,3 +10,7 @@ properties:
   receivingId:
     type: string
     format: uuid
+  receivingPieces:
+    type: array
+    items: 
+      $ref: ReceivingPiece.yaml
