@@ -1,8 +1,6 @@
 type: object
 required:
   - rulesetStatus
-  - templateConfig
-  - recurrence
   - owner
 properties:
   id:
@@ -24,3 +22,5 @@ properties:
     $ref: TemplateConfiguration.yaml
   owner:
     $ref: Serial.yaml
+  rulesetNumber:
+    type: string

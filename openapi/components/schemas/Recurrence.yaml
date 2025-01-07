@@ -20,5 +20,3 @@ properties:
     $ref: TemplateConfiguration.yaml
   owner:
     $ref: Serial.yaml
-  rulesetNumber:
-    type: string
