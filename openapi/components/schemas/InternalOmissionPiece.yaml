@@ -6,3 +6,6 @@ allOf:
         type: array
         items:
           $ref: OmissionOrigin.yaml
+      date:
+        type: string
+        format: date
