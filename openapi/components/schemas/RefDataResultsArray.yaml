@@ -5,7 +5,7 @@ properties:
   results:
     type: array
     items: 
-      $ref: ./RefDataCategory.yaml
+      $ref: RefDataCategory.yaml
   meta:
     type: object
   page:

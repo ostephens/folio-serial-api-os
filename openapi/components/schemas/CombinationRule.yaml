@@ -1,10 +1,21 @@
 type: object
 properties:
-  ordinal:
+  issuesToCombine:
     type: integer
   pattern:
-    type: string
-    format: uuid
+    oneOf: 
+     # -  $ref: CombinationPatternDay.yaml
+     # -  $ref: CombinationPatternDayMonth.yaml
+     # -  $ref: CombinationPatternDayWeek.yaml
+     # -  $ref: CombinationPatternDayWeekday.yaml
+     # -  $ref: CombinationPatternDayWeekMonth.yaml
+      -  $ref: CombinationPatternIssue.yaml
+      -  $ref: CombinationPatternIssueMonth.yaml
+      -  $ref: CombinationPatternIssueWeek.yaml
+      -  $ref: CombinationPatternIssueWeekMonth.yaml
+     # -  $ref: CombinationPatternMonth.yaml
+     # -  $ref: CombinationPatternWeek.yaml
+     # -  $ref: CombinationPatternWeekMonth.yaml
   patternType:
     $ref: CombinationPatternType.yaml
   timeUnit:

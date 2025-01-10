@@ -3,6 +3,8 @@ properties:
   id:
     type: string
     format: uuid
+  class:
+    type: string
   templateString:
     type: string
   label:
@@ -10,3 +12,7 @@ properties:
   receivingId:
     type: string
     format: uuid
+  receivingPieces:
+    type: array
+    items: 
+      $ref: ReceivingPiece.yaml

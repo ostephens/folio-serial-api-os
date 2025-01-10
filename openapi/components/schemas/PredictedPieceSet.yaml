@@ -3,23 +3,28 @@ required:
   - startDate
   - pieces
   - ruleSet
-properties: 
+properties:
+  continuationPieceRecurrenceMetadata: 
+    $ref: TemplateMetadata.yaml
   dateCreated:
     type: string
     format: datetime
   id:
     type: string
     format: uuid
+  initialPieceRecurrenceMetadata:
+    $ref: TemplateMetadata.yaml
   lastUpdated:
     type: string
     format: datetime
   pieces:
     type: array
     items: 
-      type: object
-      $ref: ./InternalPiece.yaml
+      anyOf:
+        - $ref: InternalCombinationPiece.yaml
+        - $ref: InternalOmissionPiece.yaml
+        - $ref: InternalRecurrencePiece.yaml
   ruleset:
-    type: object
     $ref: SerialRuleset.yaml
   startDate:
     type: string

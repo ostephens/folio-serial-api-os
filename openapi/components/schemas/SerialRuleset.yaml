@@ -1,8 +1,6 @@
 type: object
 required:
   - rulesetStatus
-  - templateConfig
-  - recurrence
   - owner
 properties:
   id:
@@ -11,7 +9,7 @@ properties:
   rulesetStatus:
     oneOf:
       - type: string
-      - $ref: ./RefData.yaml
+      - $ref: RefData.yaml
   description:
     type: string
   recurrence:
@@ -21,6 +19,8 @@ properties:
   combination:
     $ref: Combination.yaml
   templateConfig:
-    $ref: Omission.yaml
+    $ref: TemplateConfiguration.yaml
   owner:
     $ref: Serial.yaml
+  rulesetNumber:
+    type: string

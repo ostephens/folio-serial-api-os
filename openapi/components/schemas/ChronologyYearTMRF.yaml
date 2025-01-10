@@ -1,0 +1,8 @@
+type: object
+required:
+  - yearFormat
+properties: 
+  yearFormat:
+    oneOf:
+      - type: string
+      - $ref: RefData.yaml

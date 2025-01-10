@@ -1,0 +1,19 @@
+type:
+  object
+required: 
+  - index
+  - units
+  - format
+  - sequence
+properties: 
+  id:
+    type: string
+    format: uuid
+  index:
+    type: integer
+  units:
+    type: integer
+  value:
+    type: string
+  internalNote:
+    type: string

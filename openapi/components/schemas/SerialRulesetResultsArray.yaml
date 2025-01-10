@@ -5,7 +5,7 @@ properties:
   results:
     type: array
     items: 
-      $ref: ./SerialRulesetResults.yaml
+      $ref: SerialRulesetResults.yaml
   meta:
     type: object
   page:
