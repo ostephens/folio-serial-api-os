@@ -5,7 +5,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: ../components/schemas/serialRuleset.yaml
+          $ref: ../components/schemas/PredictedPieceSetGenerator.yaml
   responses:
     '201':
       description: Created
