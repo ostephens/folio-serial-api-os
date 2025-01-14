@@ -29,5 +29,7 @@ properties:
   startDate:
     type: string
     format: date
+  numberOfCycles:
+    type: integer
   note: 
     type: string
