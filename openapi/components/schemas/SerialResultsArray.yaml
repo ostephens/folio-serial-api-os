@@ -3,9 +3,7 @@ required:
   - results
 properties:
   results:
-    type: array
-    items: 
-      $ref: Serial.yaml
+    $ref: SerialResults.yaml
   meta:
     type: object
   page:

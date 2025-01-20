@@ -3,9 +3,7 @@ required:
   - results
 properties:
   results:
-    type: array
-    items: 
-      $ref: RefDataCategory.yaml
+    $ref: RefDataResults.yaml
   meta:
     type: object
   page:
