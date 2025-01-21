@@ -19,6 +19,10 @@ paths:
     $ref: paths/serials.yaml
   /serials-management/serials/{uuid}:
     $ref: paths/serials_{uuid}.yaml
+  /serials-management/modelRulesets:
+    $ref: paths/modelrulesets.yaml
+  /serials-management/modelRulesets/{uuid}:
+    $ref: paths/modelrulesets_{uuid}.yaml 
   /serials-management/rulesets:
     $ref: paths/rulesets.yaml
   /serials-management/rulesets/{uuid}:
