@@ -3,7 +3,7 @@ required:
   - results
 properties:
   results:
-    $ref: PredictedPieceSetResults.yaml
+    $ref: ModelRuleSetResults.yaml
   meta:
     type: object
   page:

@@ -21,6 +21,8 @@ properties:
   templateConfig:
     $ref: TemplateConfiguration.yaml
   owner:
-    $ref: Serial.yaml
+    oneOf:
+      - $ref: Serial.yaml
+      - $ref: ModelRuleset.yaml
   rulesetNumber:
     type: string
