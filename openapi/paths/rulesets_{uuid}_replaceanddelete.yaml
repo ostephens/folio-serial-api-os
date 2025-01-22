@@ -1,5 +1,5 @@
 post:
-  summary: Replace and delete an unused publicaiton patter
+  summary: Replace and delete an unused publicaiton pattern
   operationId: replaceAndDeleteRuleset
   parameters:
     - name: uuid
