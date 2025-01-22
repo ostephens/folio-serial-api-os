@@ -683,7 +683,7 @@ paths:
           description: Internal server error
   /serials-management/rulesets/{uuid}/replaceAndDelete:
     post:
-      summary: Replace and delete an unused publicaiton pattern
+      summary: Replace and delete an unused publication pattern
       operationId: replaceAndDeleteRuleset
       parameters:
         - name: uuid
