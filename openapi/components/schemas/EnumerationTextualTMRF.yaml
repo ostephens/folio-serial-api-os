@@ -2,10 +2,13 @@ type:
   object
 required:
   - levels
+  - refdataCategory
 properties:
   id:
     type: string
     format: uuid
+  refdataCategory:
+    $ref: RefDataCategory.yaml
   levels:
     type: array
     items:
