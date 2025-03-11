@@ -11,9 +11,12 @@ properties:
     $ref: SerialRuleset.yaml
   templateString:
     type: string
-  rules:
+  chronologyRules:
     type: array
     items: 
-      $ref: TemplateMetadataRule.yaml
-    
+      $ref: ChronologyTemplateMetadataRule.yaml
+  enumerationRules:
+    type: array
+    items: 
+      $ref: EnumerationTemplateMetadataRule.yaml
   

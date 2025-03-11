@@ -5,6 +5,12 @@ properties:
   id:
     type: string
     format: uuid
+  index:
+    type: integer
+  templateMetadataRuleFormat:
+    oneOf:
+      - type: string
+      - $ref: RefData.yaml
   ruleFormat:
     oneOf: 
       - $ref: EnumerationNumericTMRF.yaml

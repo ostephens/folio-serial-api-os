@@ -3,6 +3,9 @@ required:
   - monthFormat
   - yearFormat
 properties: 
+  id: 
+    type: string
+    format: uuid
   monthFormat:
     oneOf: 
       -  type: string

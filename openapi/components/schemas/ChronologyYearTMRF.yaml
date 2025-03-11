@@ -2,6 +2,9 @@ type: object
 required:
   - yearFormat
 properties: 
+  id: 
+    type: string
+    format: uuid
   yearFormat:
     oneOf:
       - type: string
