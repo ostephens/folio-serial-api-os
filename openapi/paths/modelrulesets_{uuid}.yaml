@@ -28,39 +28,6 @@ get:
             $ref: ../components/schemas/HttpError.yaml
     '500':
       description: Internal server error
-put:
-  summary: Update model ruleset record
-  operationId: putModelRuleset
-  parameters:
-    - name: uuid
-      in: path
-      description: The uuid of the model ruleset record to be put
-      required: true
-      schema:
-        type: string
-  requestBody:
-    content:
-      application/json:
-        schema:
-          $ref: ../components/schemas/ModelRuleset.yaml
-    required: true
-  responses:
-    '200':
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/ModelRuleset.yaml
-    '400':
-      description: Bad request error
-    '404':
-      description: Not found error
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/HttpError.yaml
-    '500':
-      description: Internal server error  
 delete:
   summary: Delete a specified model ruleset record
   operationId: deleteModelRuleset
