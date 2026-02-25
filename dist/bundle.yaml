@@ -987,6 +987,8 @@ components:
           type: string
     SerialOrderLine:
       type: object
+      required:
+        - remoteId
       properties:
         owner:
           type: object
@@ -994,6 +996,9 @@ components:
             id:
               type: string
               format: uuid
+        remoteId:
+          type: string
+          format: uuid
         title:
           type: string
         titleId:
@@ -1258,7 +1263,7 @@ components:
       type: object
       required:
         - issue
-        - month
+        - week
       properties:
         id:
           type: string
@@ -1414,7 +1419,7 @@ components:
       type: object
       required:
         - issue
-        - month
+        - week
       properties:
         id:
           type: string
@@ -1505,7 +1510,6 @@ components:
       type: object
       required:
         - owner
-        - rules
         - templateString
       properties:
         id:
@@ -1526,7 +1530,7 @@ components:
     Serial:
       type: object
       required:
-        - status
+        - serialStatus
       properties:
         id:
           type: string
@@ -1814,7 +1818,7 @@ components:
     SerialNote:
       type: object
       required:
-        - text
+        - note
       properties:
         id:
           type: string
@@ -1982,12 +1986,12 @@ components:
             - $ref: '#/components/schemas/RefData'
     TemplateMetadata:
       type: object
-      required:
-        - standard
       properties:
         id:
           type: string
           format: uuid
+        standard:
+          type: object
         userConfigured:
           type: array
           items:
@@ -2077,7 +2081,7 @@ components:
       required:
         - startDate
         - pieces
-        - ruleSet
+        - ruleset
       properties:
         continuationPieceRecurrenceMetadata:
           $ref: '#/components/schemas/TemplateMetadata'
