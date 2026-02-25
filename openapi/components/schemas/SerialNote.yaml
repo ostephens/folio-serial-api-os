@@ -1,6 +1,6 @@
 type: object
 required:
-  - text
+  -   note
 properties:
   id:
     type: string

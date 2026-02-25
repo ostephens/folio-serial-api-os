@@ -1,7 +1,6 @@
 type: object
 required: 
   - owner
-  - rules
   - templateString
 properties:
   id:

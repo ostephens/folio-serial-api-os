@@ -1,6 +1,6 @@
 type: object
 required:
-  - status
+  - serialStatus
 properties:
   id:
     type: string
