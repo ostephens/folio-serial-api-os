@@ -2,7 +2,7 @@ type: object
 properties:
   value:
     type: string
-    enum: [issue]
+    enum: ["day","week","month","year"]
   id:
     type: string
     format: uuid

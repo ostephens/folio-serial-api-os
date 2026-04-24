@@ -3,7 +3,7 @@ required:
   - timeUnit
 properties:
   timeUnit:
-    $ref: TimeUnit.yaml
+    $ref: RecurrenceTimeUnit.yaml
   period:
     type: integer
   issues:

@@ -13,5 +13,3 @@ properties:
       - $ref: RecurrencePatternYearWeekday.yaml
   patternType:
     $ref: RecurrencePatternType.yaml
-  timeUnit:
-    $ref: TimeUnit.yaml

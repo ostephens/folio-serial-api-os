@@ -1,5 +1,8 @@
 type: object
 properties: 
+  id:
+      type: string
+      format: uuid
   pattern:
     oneOf: 
       -  $ref: OmissionPatternDay.yaml
@@ -17,4 +20,4 @@ properties:
   patternType:
     $ref: OmissionPatternType.yaml
   timeUnit:
-    $ref: TimeUnit.yaml
+    $ref: OmissionTimeUnit.yaml
