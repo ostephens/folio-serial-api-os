@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 2.0.1
+  version: 2.1.0
   title: Folio Serials Management
   description: API for the Folio library services platform mod-serials-management app
 servers:
