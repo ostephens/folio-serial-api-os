@@ -31,7 +31,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: ../components/schemas/serialRuleset.yaml
+          $ref: ../components/schemas/SerialRuleset.yaml
     description: Ruleset JSON
     required: true
   responses:
@@ -40,7 +40,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/serialRuleset.yaml
+            $ref: ../components/schemas/SerialRuleset.yaml
     '400':
       description: Bad request error
     '403':
