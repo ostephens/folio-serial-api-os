@@ -12,11 +12,3 @@ properties:
     type: array
     items:
       $ref: RecurrenceRule.yaml
-  omission:
-    $ref: Omission.yaml
-  combination:
-    $ref: Combination.yaml
-  templateConfig:
-    $ref: TemplateConfiguration.yaml
-  owner:
-    $ref: Serial.yaml
