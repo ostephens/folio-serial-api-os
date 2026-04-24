@@ -22,4 +22,4 @@ properties:
   patternType:
     $ref: CombinationPatternType.yaml
   timeUnit:
-    $ref: TimeUnit.yaml
+    $ref: CombinationTimeUnit.yaml
