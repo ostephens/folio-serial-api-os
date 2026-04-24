@@ -1,6 +1,7 @@
-allOf:
-  - $ref: InternalPiece.yaml
-  - type: object
-    properties: 
-        combinationRule:
-          $ref: CombinationRule.yaml
+type: object
+properties: 
+    id:
+      type: string
+      format: uuid
+    combinationRule:
+      $ref: CombinationRule.yaml
