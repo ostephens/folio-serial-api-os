@@ -12,7 +12,7 @@ properties:
     oneOf: 
       - $ref: EnumerationUCTMT.yaml
       - $ref: ChronologyUCTMT.yaml
-  userConfiguredMetadataType:
+  userConfiguredTemplateMetadataType:
     oneOf:
       - type: string
       - $ref: RefData.yaml

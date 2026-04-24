@@ -1,7 +1,6 @@
 type: object
 required: 
   - index
-  - value
   - rawValue
 properties:
   id:

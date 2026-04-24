@@ -3,4 +3,6 @@ properties:
   value:
     type: string
   levels:
-    $ref: EnumerationLevelUCTMT.yaml
+    type: array
+    items:
+      $ref: EnumerationLevelUCTMT.yaml
