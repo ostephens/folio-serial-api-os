@@ -1,11 +1,12 @@
 openapi: 3.0.0
 info:
-  version: 2.0.0
+  version: 2.0.1
   title: Folio Serials Management
   description: API for the Folio library services platform mod-serials-management app
 servers:
   - url: 'https://folio-snapshot-okapi.dev.folio.org'
   - url: 'https://folio-snapshot-2-okapi.dev.folio.org'
+  - url: 'https://folio-etesting-snapshot-kong.ci.folio.org'
 paths:
   /serials-management/locales:
     $ref: paths/locales.yaml
@@ -23,6 +24,8 @@ paths:
     $ref: paths/modelrulesets.yaml
   /serials-management/modelRulesets/{uuid}:
     $ref: paths/modelrulesets_{uuid}.yaml 
+  /serials-management/modelRulesets/{uuid}/replaceAndDelete:
+    $ref: paths/modelrulesets_{uuid}_replaceanddelete.yaml
   /serials-management/rulesets:
     $ref: paths/rulesets.yaml
   /serials-management/rulesets/{uuid}:
