@@ -16,7 +16,7 @@ properties:
   serialRulesets:
     type: array
     items: 
-      $ref: serialRuleset.yaml
+      $ref: SerialRuleset.yaml
   notes:
     type: array
     items:
