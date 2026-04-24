@@ -2,7 +2,7 @@ type: object
 properties:
   value:
     type: string
-    enum: [day, day_month, day_week, day_weekday, day_week_month, week, week_month, month, issue, issue_week, issue_week_month, issue_month]
+    enum: ["day", "day_month", "day_week", "day_weekday", "day_week_month", "week", "week_month", "month", "issue", "issue_week", "issue_week_month", "issue_month"]
   id:
     type: string
     format: uuid
